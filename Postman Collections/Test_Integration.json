@@ -1,0 +1,152 @@
+{
+  "info": {
+    "_postman_id": "4e83bb86-0fb8-4fe1-ba62-3e5125b48883",
+    "name": "Test Integration",
+    "description": "To test integration between postman and github",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "_postman_id": "80e7df0f-f2fc-408c-aae4-9dacc9e346a6",
+      "name": "Flow 001",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "8a7497c2-2a04-4184-84f8-06a7623f0c23",
+          "name": "1. register card",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1a30db02-a3a6-479d-91d8-fe8362f15fbf",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"token\":\"SP|T|v1|src_1DH6LZIZ3LuPcn2uqnVgUqwm\"}"
+            },
+            "url": "http://35.229.203.184/v1/create-card"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "e7af5bd4-7dec-45a7-a1bc-57f046fc8c26",
+          "name": "2. reservation - authorize",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2c7df018-3e0c-4377-81ba-90c0b5a78fb4",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"card_ids\":[\"SP|C|v1|cus_DgITnhWYeHsen5|src_1DEvsOBkazJGAdhs6E5aPaR2\"],\r\n\"amount\":100000,\r\n\"unit\":\"USD\",\r\n\"transaction_id\":\"flow001\",\r\n\"return_url\":\"https://dev.veltra.com/\"}"
+            },
+            "url": "http://35.229.203.184/v1/authorize"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "c6b2fae8-d7e8-4c30-be45-46fd068f2e71",
+          "name": "3. reservation - capture",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f97411a7-4948-4f28-9f78-46344b661985",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"payment_id\":\"SP|P|v1||src_1DEvsOBkazJGAdhs6E5aPaR2|1|cus_DgITnhWYeHsen5|idm_FUB25N47eshf1DbZYp90fVR2|0|ch_1DGLUkBkazJGAdhs3mexavju\",\r\n\"amount\":100000,\r\n\"unit\":\"USD\"}"
+            },
+            "url": "http://35.229.203.184/v1/capture"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "bfc23a25-ce46-45b0-b691-f8b8a6708ba0",
+          "name": "4. cancel - refund",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "43995e28-a211-49b1-993e-d8f095287611",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"charge_id\":\"SP|H|v1|ch_1DGLUkBkazJGAdhs3mexavju\",\r\n\"amount\":100000,\r\n\"unit\":\"USD\"}"
+            },
+            "url": "http://35.229.203.184/v1/refund"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
