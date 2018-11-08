@@ -1,0 +1,44 @@
+{
+  "info": {
+    "_postman_id": "c844b608-d52a-4578-81e0-105753c2ab8b",
+    "name": "Postman API",
+    "description": "To test all Postman API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "_postman_id": "fb19920a-c328-4c8c-bc49-c1589b1eabe7",
+      "name": "Get Single Collection",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "0ee014533ab54715a438fa5ecac18945",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": "https://api.getpostman.com/collections"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "68e33e05-a350-42f5-9362-116900da514f",
+      "name": "Update",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": ""
+      },
+      "response": []
+    }
+  ]
+}
