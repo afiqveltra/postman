@@ -25,20 +25,6 @@
         "url": "https://api.getpostman.com/collections"
       },
       "response": []
-    },
-    {
-      "_postman_id": "68e33e05-a350-42f5-9362-116900da514f",
-      "name": "Update",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": ""
-        },
-        "url": ""
-      },
-      "response": []
     }
   ]
 }
